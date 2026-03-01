@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-id="th-modified">The 20 Compounds — Your Guide to Restricted Therapeutics</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07080c;
+    --surface: #0d0f16;
+    --surface2: #12151e;
+    --border: rgba(255,255,255,0.06);
+    --border-h: rgba(255,255,255,0.12);
+    --text: #c8cdd8;
+    --text-dim: #6b7280;
+    --text-bright: #eef0f6;
+    --accent: #5b8af5;
+    --accent2: #8b6cf6;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --red: #f87171;
+    --teal: #2dd4bf;
+    --pink: #f472b6;
+    --orange: #fb923c;
+    --cat-healing: #34d399;
+    --cat-gh: #5b8af5;
+    --cat-cognitive: #c084fc;
+    --cat-immune: #fbbf24;
+    --cat-antiaging: #f472b6;
+    --cat-fat: #fb923c;
+    --cat-other: #2dd4bf;
+    --cat-testosterone: #38bdf8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Geist', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAVIGATION ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(7,8,12,0.8);
+    backdrop-filter: blur(24px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-logo {
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px; color: var(--text-bright);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 4px; }
+  .nav-links a {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--text-dim);
+    text-decoration: none; padding: 6px 12px; border-radius: 6px;
+    transition: all 0.2s;
+  }
+  .nav-links a:hover { color: var(--text-bright); background: rgba(255,255,255,0.04); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 140px 24px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 600px;
+    background: radial-gradient(ellipse, rgba(91,138,245,0.1) 0%, rgba(139,108,246,0.05) 40%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
+    background: linear-gradient(transparent, var(--bg));
+    pointer-events: none;
+    z-index: 1;
+  }
+  .hero-badge {
+    display: inline-block;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--amber);
+    background: rgba(251,191,36,0.08);
+    border: 1px solid rgba(251,191,36,0.15);
+    padding: 6px 16px; border-radius: 50px;
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(42px, 7vw, 80px);
+    font-weight: 400;
+    line-height: 1.05;
+    color: var(--text-bright);
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero p {
+    font-size: 17px; color: var(--text-dim);
+    max-width: 640px; margin: 0 auto 40px;
+    line-height: 1.7;
+  }
+
+  /* ── SECTION LAYOUT ── */
+  section { padding: 80px 24px; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 400; color: var(--text-bright);
+    line-height: 1.15; margin-bottom: 16px;
+  }
+  .section-desc {
+    font-size: 15px; color: var(--text-dim);
+    max-width: 600px; line-height: 1.7; margin-bottom: 48px;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 6px; top: 0; bottom: 0;
+    width: 2px; background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+  }
+  .tl-item { position: relative; margin-bottom: 36px; }
+  .tl-dot {
+    position: absolute; left: -32px; top: 6px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--accent);
+  }
+  .tl-date { font-size: 12px; font-weight: 600; color: var(--accent); margin-bottom: 4px; letter-spacing: 0.02em; }
+  .tl-title { font-size: 16px; font-weight: 600; color: var(--text-bright); margin-bottom: 4px; }
+  .tl-text { font-size: 14px; color: var(--text-dim); line-height: 1.65; }
+
+  /* ── STATUS SECTION ── */
+  .status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 16px;
+  }
+  .status-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    transition: border-color 0.3s;
+  }
+  .status-card:hover { border-color: var(--border-h); }
+  .status-card h4 {
+    font-size: 12px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.08em; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .status-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .status-card ul { list-style: none; }
+  .status-card li {
+    font-size: 13px; padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .status-card li:last-child { border: none; }
+  .status-card li span { color: var(--text-dim); font-size: 12px; }
+
+  /* ── PEPTIDE CARDS ── */
+  .filter-bar {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px;
+  }
+  .filter-btn {
+    font-family: 'Geist', sans-serif;
+    font-size: 12px; font-weight: 500;
+    padding: 7px 16px; border-radius: 50px;
+    border: 1px solid var(--border);
+    background: transparent; color: var(--text-dim);
+    cursor: pointer; transition: all 0.2s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    border-color: var(--accent);
+    color: var(--text-bright);
+    background: rgba(91,138,245,0.06);
+  }
+
+  .peptide-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+  }
+
+  .peptide-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 0;
+    overflow: hidden;
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+    position: relative;
+  }
+  .peptide-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 17px;
+    padding: 1.5px;
+    background: linear-gradient(135deg, transparent 40%, rgba(91,138,245,0.4) 50%, rgba(139,108,246,0.3) 55%, rgba(244,114,182,0.2) 60%, transparent 70%);
+    background-size: 300% 300%;
+    background-position: 100% 100%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .peptide-card:hover {
+    transform: translateY(-6px) scale(1.015);
+    border-color: transparent;
+    box-shadow:
+      0 8px 30px rgba(91,138,245,0.12),
+      0 4px 15px rgba(139,108,246,0.08),
+      0 0 0 1px rgba(91,138,245,0.15);
+  }
+  .peptide-card:hover::before {
+    opacity: 1;
+    background-position: 0% 0%;
+  }
+
+  /* Category-specific glow colors on hover */
+  .peptide-card[data-cat="testosterone"]:hover {
+    box-shadow: 0 8px 30px rgba(56,189,248,0.15), 0 4px 15px rgba(56,189,248,0.08), 0 0 0 1px rgba(56,189,248,0.2);
+  }
+  .peptide-card[data-cat="testosterone"]::before {
+    background: linear-gradient(135deg, transparent 40%, rgba(56,189,248,0.5) 50%, rgba(91,138,245,0.3) 55%, rgba(56,189,248,0.2) 60%, transparent 70%);
+    background-size: 300% 300%; background-position: 100% 100%;
+  }
+  .peptide-card[data-cat="healing"]:hover {
+    box-shadow: 0 8px 30px rgba(52,211,153,0.15), 0 4px 15px rgba(52,211,153,0.08), 0 0 0 1px rgba(52,211,153,0.2);
+  }
+  .peptide-card[data-cat="healing"]::before {
+    background: linear-gradient(135deg, transparent 40%, rgba(52,211,153,0.5) 50%, rgba(45,212,191,0.3) 55%, rgba(52,211,153,0.2) 60%, transparent 70%);
+    background-size: 300% 300%; background-position: 100% 100%;
+  }
+  .peptide-card[data-cat="gh"]:hover {
+    box-shadow: 0 8px 30px rgba(91,138,245,0.15), 0 4px 15px rgba(91,138,245,0.08), 0 0 0 1px rgba(91,138,245,0.2);
+  }
+  .peptide-card[data-cat="fat"]:hover {
+    box-shadow: 0 8px 30px rgba(251,146,60,0.15), 0 4px 15px rgba(251,146,60,0.08), 0 0 0 1px rgba(251,146,60,0.2);
+  }
+  .peptide-card[data-cat="fat"]::before {
+    background: linear-gradient(135deg, transparent 40%, rgba(251,146,60,0.5) 50%, rgba(251,191,36,0.3) 55%, rgba(251,146,60,0.2) 60%, transparent 70%);
+    background-size: 300% 300%; background-position: 100% 100%;
+  }
+  .peptide-card[data-cat="cognitive"]:hover {
+    box-shadow: 0 8px 30px rgba(192,132,252,0.15), 0 4px 15px rgba(192,132,252,0.08), 0 0 0 1px rgba(192,132,252,0.2);
+  }
+  .peptide-card[data-cat="cognitive"]::before {
+    background: linear-gradient(135deg, transparent 40%, rgba(192,132,252,0.5) 50%, rgba(139,108,246,0.3) 55%, rgba(192,132,252,0.2) 60%, transparent 70%);
+    background-size: 300% 300%; background-position: 100% 100%;
+  }
+  .peptide-card[data-cat="immune"]:hover {
+    box-shadow: 0 8px 30px rgba(251,191,36,0.12), 0 4px 15px rgba(251,191,36,0.06), 0 0 0 1px rgba(251,191,36,0.2);
+  }
+  .peptide-card[data-cat="immune"]::before {
+    background: linear-gradient(135deg, transparent 40%, rgba(251,191,36,0.5) 50%, rgba(251,146,60,0.3) 55%, rgba(251,191,36,0.2) 60%, transparent 70%);
+    background-size: 300% 300%; background-position: 100% 100%;
+  }
+  .peptide-card[data-cat="antiaging"]:hover {
+    box-shadow: 0 8px 30px rgba(244,114,182,0.15), 0 4px 15px rgba(244,114,182,0.08), 0 0 0 1px rgba(244,114,182,0.2);
+  }
+  .peptide-card[data-cat="antiaging"]::before {
+    background: linear-gradient(135deg, transparent 40%, rgba(244,114,182,0.5) 50%, rgba(244,114,182,0.3) 55%, rgba(192,132,252,0.2) 60%, transparent 70%);
+    background-size: 300% 300%; background-position: 100% 100%;
+  }
+  .peptide-card[data-cat="other"]:hover {
+    box-shadow: 0 8px 30px rgba(45,212,191,0.12), 0 4px 15px rgba(45,212,191,0.06), 0 0 0 1px rgba(45,212,191,0.2);
+  }
+  .peptide-card[data-cat="other"]::before {
+    background: linear-gradient(135deg, transparent 40%, rgba(45,212,191,0.5) 50%, rgba(52,211,153,0.3) 55%, rgba(45,212,191,0.2) 60%, transparent 70%);
+    background-size: 300% 300%; background-position: 100% 100%;
+  }
+
+  .peptide-card.hidden { display: none; }
+
+  .pc-header {
+    padding: 20px 22px 14px;
+    display: flex; justify-content: space-between; align-items: flex-start;
+  }
+  .pc-num {
+    font-family: 'Instrument Serif', serif;
+    font-size: 40px; font-weight: 400; line-height: 1;
+    color: rgba(255,255,255,0.06);
+  }
+  .pc-tag {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 4px 10px; border-radius: 50px;
+  }
+  .pc-body { padding: 0 22px 20px; }
+  .pc-name {
+    font-size: 20px; font-weight: 600; color: var(--text-bright);
+    margin-bottom: 2px;
+  }
+  .pc-alias { font-size: 12px; color: var(--text-dim); margin-bottom: 10px; }
+  .pc-goodfor { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; }
+  .pc-goodfor-tag {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.02em;
+    padding: 4px 10px; border-radius: 50px;
+    background: rgba(255,255,255,0.04);
+    color: var(--text-bright);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .pc-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 600; color: var(--accent);
+    text-decoration: none; padding: 8px 16px; border-radius: 8px;
+    background: rgba(91,138,245,0.08); border: 1px solid rgba(91,138,245,0.2);
+    transition: all 0.2s; margin-top: 12px;
+  }
+  .pc-link:hover { background: rgba(91,138,245,0.15); border-color: rgba(91,138,245,0.4); }
+  .pc-link.testo { color: var(--cat-testosterone); background: rgba(56,189,248,0.08); border-color: rgba(56,189,248,0.2); }
+  .pc-link.testo:hover { background: rgba(56,189,248,0.15); border-color: rgba(56,189,248,0.4); }
+  .pc-desc { font-size: 13px; color: var(--text); line-height: 1.65; margin-bottom: 14px; }
+
+  .pc-meta {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  }
+  .pc-meta-item {
+    font-size: 11px; padding: 8px 10px;
+    background: rgba(255,255,255,0.02);
+    border-radius: 8px;
+  }
+  .pc-meta-label { color: var(--text-dim); font-weight: 500; display: block; margin-bottom: 2px; }
+  .pc-meta-value { color: var(--text-bright); font-weight: 600; }
+
+  .pc-expand {
+    padding: 0 22px 20px;
+    display: none;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+    padding-top: 16px;
+  }
+  .pc-expand.open { display: block; }
+  .pc-expand h5 { font-size: 11px; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin: 12px 0 6px; }
+  .pc-expand h5:first-child { margin-top: 0; }
+  .pc-expand p { font-size: 13px; color: var(--text); line-height: 1.65; }
+  .pc-expand ul { list-style: none; }
+  .pc-expand li { font-size: 13px; color: var(--text); padding: 3px 0; padding-left: 16px; position: relative; }
+  .pc-expand li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 11px; }
+
+  /* Status badges */
+  .badge-returning { background: rgba(52,211,153,0.1); color: var(--green); }
+  .badge-review { background: rgba(91,138,245,0.1); color: var(--accent); }
+  .badge-onhold { background: rgba(251,191,36,0.1); color: var(--amber); }
+  .badge-restricted { background: rgba(248,113,113,0.1); color: var(--red); }
+  .badge-compoundable { background: rgba(56,189,248,0.1); color: #38bdf8; }
+
+  /* Category colors */
+  .cat-healing { color: var(--cat-healing); }
+  .cat-gh { color: var(--cat-gh); }
+  .cat-cognitive { color: var(--cat-cognitive); }
+  .cat-immune { color: var(--cat-immune); }
+  .cat-antiaging { color: var(--cat-antiaging); }
+  .cat-fat { color: var(--cat-fat); }
+  .cat-other { color: var(--cat-other); }
+  .cat-testosterone { color: var(--cat-testosterone); }
+
+  /* ── FAQ ── */
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .faq-item:hover { border-color: var(--border-h); }
+  .faq-q {
+    padding: 18px 22px;
+    font-size: 15px; font-weight: 500; color: var(--text-bright);
+    cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    user-select: none;
+  }
+  .faq-q::after { content: '+'; font-size: 20px; color: var(--text-dim); transition: transform 0.3s; }
+  .faq-q.open::after { transform: rotate(45deg); }
+  .faq-a {
+    padding: 0 22px 18px;
+    font-size: 14px; color: var(--text-dim); line-height: 1.7;
+    display: none;
+  }
+  .faq-a.open { display: block; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 48px 24px;
+    text-align: center;
+  }
+  footer p { font-size: 12px; color: var(--text-dim); max-width: 640px; margin: 0 auto; line-height: 1.8; }
+  footer .disclaimer {
+    margin-top: 24px;
+    padding: 20px;
+    background: rgba(248,113,113,0.04);
+    border: 1px solid rgba(248,113,113,0.1);
+    border-radius: 10px;
+    font-size: 12px;
+    color: var(--red);
+    max-width: 640px;
+    margin-left: auto; margin-right: auto;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .peptide-grid { grid-template-columns: 1fr; }
+    .status-grid { grid-template-columns: 1fr; }
+    .pc-meta { grid-template-columns: 1fr; }
+    section { padding: 48px 16px; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { animation: fadeUp 0.6s ease forwards; opacity: 0; }
+  .fade-in:nth-child(2) { animation-delay: 0.08s; }
+  .fade-in:nth-child(3) { animation-delay: 0.16s; }
+  .fade-in:nth-child(4) { animation-delay: 0.24s; }
+
+  /* ── SCROLL INDICATOR ── */
+  .scroll-hint {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: var(--text-dim); font-size: 11px; letter-spacing: 0.06em;
+    text-transform: uppercase; font-weight: 500;
+    animation: bounce 2s ease infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* Stats row */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px; margin: 48px 0;
+  }
+  .stat-card {
+    text-align: center;
+    padding: 28px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+  }
+  .stat-num {
+    font-family: 'Instrument Serif', serif;
+    font-size: 40px; color: var(--text-bright);
+    line-height: 1;
+  }
+  .stat-label { font-size: 12px; color: var(--text-dim); margin-top: 6px; font-weight: 500; }
+
+  /* ── VISUAL SECTIONS ── */
+  .hero-bg {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -1; overflow: hidden;
+  }
+  .hero-bg svg { width: 100%; height: 100%; }
+  .hero-bg img {
+    width: 100%; height: 100%; object-fit: cover;
+    opacity: 0.12; filter: grayscale(40%);
+  }
+
+  .visual-banner {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    margin-bottom: 48px;
+    height: 260px;
+    display: flex;
+    align-items: flex-end;
+  }
+  .visual-banner img {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover; filter: brightness(0.45) saturate(0.8);
+  }
+  .visual-banner-content {
+    position: relative; z-index: 2;
+    padding: 32px;
+  }
+  .visual-banner-content h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 32px; color: #fff; margin-bottom: 6px; font-weight: 400;
+  }
+  .visual-banner-content p { font-size: 14px; color: rgba(255,255,255,0.7); max-width: 500px; }
+
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 40px 0;
+  }
+  .photo-grid-item {
+    border-radius: 14px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    position: relative;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .photo-grid-item:hover { border-color: var(--border-h); transform: translateY(-2px); }
+  .photo-grid-item img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.5s;
+  }
+  .photo-grid-item:hover img { transform: scale(1.05); }
+  .photo-grid-item .photo-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 16px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    font-size: 13px; font-weight: 600; color: #fff;
+  }
+  .photo-grid-item .photo-label span {
+    display: block; font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.6); margin-top: 2px;
+  }
+
+  @media (max-width: 768px) {
+    .photo-grid { grid-template-columns: 1fr 1fr; }
+    .visual-banner { height: 200px; }
+    .visual-banner-content h3 { font-size: 24px; }
+  }
+
+  .info-callout {
+    display: flex; gap: 24px; align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin: 32px 0;
+  }
+  .info-callout img {
+    width: 180px; height: 140px; border-radius: 12px;
+    object-fit: cover; flex-shrink: 0;
+  }
+  .info-callout-text h4 {
+    font-size: 18px; font-weight: 600; color: var(--text-bright); margin-bottom: 6px;
+  }
+  .info-callout-text p { font-size: 13px; color: var(--text-dim); line-height: 1.65; }
+  @media (max-width: 768px) {
+    .info-callout { flex-direction: column; }
+    .info-callout img { width: 100%; height: 160px; }
+  }
+</style>
+<meta property="og:title" content="The 20 Compounds — Your Guide to Restricted Therapeutics" data-id="th-modified" ><meta name="description" content="19-peptides-guide (1)" data-id="th-modified" ><meta property="og:description" content="19-peptides-guide (1)" data-id="th-modified" ><meta property="og:image" content="https://tiiny.host/assets/logo-purple-bg.png" data-id="th-modified" ><meta property="og:url" content="https://rose-clarey-62.tiiny.site/" data-id="th-modified" ><meta property="og:type" content="website" data-id="th-modified" ><script defer data-domain="rose-clarey-62.tiiny.site" src="https://analytics.tiiny.site/js/plausible.js"></script></head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">The <span>20</span> Compounds</a>
+    <div class="nav-links">
+      <a href="#peptides">All 20</a>
+      <a href="#background">Background</a>
+      <a href="#status">Status</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="g1" cx="30%" cy="40%"><stop offset="0%" stop-color="#5b8af5" stop-opacity="0.15"></stop><stop offset="100%" stop-color="transparent"></stop></radialGradient>
+        <radialGradient id="g2" cx="70%" cy="60%"><stop offset="0%" stop-color="#8b6cf6" stop-opacity="0.1"></stop><stop offset="100%" stop-color="transparent"></stop></radialGradient>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#g1)"></rect>
+      <rect width="100%" height="100%" fill="url(#g2)"></rect>
+      <!-- molecular structures -->
+      <g stroke="rgba(255,255,255,0.04)" stroke-width="1" fill="none">
+        <circle cx="15%" cy="25%" r="40"></circle><circle cx="15%" cy="25%" r="6" fill="rgba(91,138,245,0.15)"></circle>
+        <circle cx="22%" cy="18%" r="30"></circle><circle cx="22%" cy="18%" r="5" fill="rgba(139,108,246,0.12)"></circle>
+        <line x1="15%" y1="25%" x2="22%" y2="18%"></line>
+        <circle cx="10%" cy="35%" r="25"></circle><circle cx="10%" cy="35%" r="4" fill="rgba(91,138,245,0.1)"></circle>
+        <line x1="15%" y1="25%" x2="10%" y2="35%"></line>
+        <circle cx="80%" cy="70%" r="45"></circle><circle cx="80%" cy="70%" r="7" fill="rgba(244,114,182,0.1)"></circle>
+        <circle cx="88%" cy="62%" r="35"></circle><circle cx="88%" cy="62%" r="5" fill="rgba(251,191,36,0.08)"></circle>
+        <line x1="80%" y1="70%" x2="88%" y2="62%"></line>
+        <circle cx="75%" cy="80%" r="28"></circle><circle cx="75%" cy="80%" r="4" fill="rgba(52,211,153,0.1)"></circle>
+        <line x1="80%" y1="70%" x2="75%" y2="80%"></line>
+        <circle cx="50%" cy="15%" r="20"></circle><circle cx="50%" cy="15%" r="3" fill="rgba(56,189,248,0.12)"></circle>
+        <circle cx="58%" cy="10%" r="15"></circle><circle cx="58%" cy="10%" r="3" fill="rgba(91,138,245,0.08)"></circle>
+        <line x1="50%" y1="15%" x2="58%" y2="10%"></line>
+        <circle cx="35%" cy="85%" r="22"></circle><circle cx="35%" cy="85%" r="3" fill="rgba(251,191,36,0.1)"></circle>
+        <circle cx="42%" cy="90%" r="18"></circle><circle cx="42%" cy="90%" r="3" fill="rgba(139,108,246,0.08)"></circle>
+        <line x1="35%" y1="85%" x2="42%" y2="90%"></line>
+      </g>
+      <!-- hexagonal grid hint -->
+      <g stroke="rgba(255,255,255,0.02)" stroke-width="0.5" fill="none">
+        <polygon points="200,100 230,117 230,151 200,168 170,151 170,117"></polygon>
+        <polygon points="260,100 290,117 290,151 260,168 230,151 230,117"></polygon>
+        <polygon points="230,151 260,168 260,202 230,219 200,202 200,168"></polygon>
+        <polygon points="700,400 730,417 730,451 700,468 670,451 670,417"></polygon>
+        <polygon points="760,400 790,417 790,451 760,468 730,451 730,417"></polygon>
+        <polygon points="730,451 760,468 760,502 730,519 700,502 700,468"></polygon>
+      </g>
+    </svg>
+  </div>
+  <div class="hero-badge">Updated March 2026</div>
+  <h1>The <em>20 Compounds</em><br>Reshaping Men's Health</h1>
+  <p>The peptides and therapeutics at the center of the FDA regulatory battle — from the 19 Category 2 peptides to enclomiphene for testosterone. Here's everything you need to know about the compounds changing the game.</p>
+  <div class="scroll-hint">
+    <span>Scroll to explore</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"></path></svg>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="padding-top:0;">
+  <div class="container">
+    <div class="stats-row fade-in">
+      <div class="stat-card">
+        <div class="stat-num">20</div>
+        <div class="stat-label">Key Compounds</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="color:var(--green);">~14</div>
+        <div class="stat-label">Peptides Expected to Return</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="color:var(--amber);">5</div>
+        <div class="stat-label">Under PCAC Review</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="color:var(--red);">~5</div>
+        <div class="stat-label">Likely Stay Restricted</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALL 20 COMPOUNDS (moved up) -->
+<section id="peptides">
+  <div class="container">
+    <div class="section-label">Complete Guide</div>
+    <div class="section-title">All 20 Compounds — Explained</div>
+    <div class="section-desc">Tap any card to expand. Each compound includes what it's good for, how it works, research status, and regulatory outlook.</div>
+
+    <div class="photo-grid">
+      <div class="photo-grid-item" style="background:linear-gradient(135deg, rgba(56,189,248,0.12), rgba(56,189,248,0.03));">
+        <svg viewBox="0 0 120 90" style="width:100%;height:100%;position:absolute;top:0;left:0;opacity:0.5;" xmlns="http://www.w3.org/2000/svg"><g stroke="#38bdf8" stroke-width="1.5" fill="none" opacity="0.5"><circle cx="60" cy="35" r="12"></circle><line x1="60" y1="47" x2="60" y2="70"></line><line x1="60" y1="55" x2="45" y2="45"></line><line x1="60" y1="55" x2="75" y2="45"></line><line x1="60" y1="70" x2="48" y2="85"></line><line x1="60" y1="70" x2="72" y2="85"></line><path d="M40 30 Q60 10 80 30" stroke-dasharray="3,3"></path><text x="60" y="38" text-anchor="middle" font-size="8" fill="#38bdf8" stroke="none">T</text></g></svg>
+        <div class="photo-label">Testosterone & Strength<span>Enclomiphene, CJC-1295, Ipamorelin</span></div>
+      </div>
+      <div class="photo-grid-item" style="background:linear-gradient(135deg, rgba(52,211,153,0.12), rgba(52,211,153,0.03));">
+        <svg viewBox="0 0 120 90" style="width:100%;height:100%;position:absolute;top:0;left:0;opacity:0.5;" xmlns="http://www.w3.org/2000/svg"><g stroke="#34d399" stroke-width="1.5" fill="none" opacity="0.5"><path d="M30 60 Q45 20 60 45 Q75 70 90 30"></path><circle cx="30" cy="60" r="4" fill="#34d399" opacity="0.4"></circle><circle cx="60" cy="45" r="4" fill="#34d399" opacity="0.4"></circle><circle cx="90" cy="30" r="4" fill="#34d399" opacity="0.4"></circle><path d="M25 75 L95 75" stroke-dasharray="4,4" opacity="0.3"></path><path d="M50 65 Q60 55 70 65" stroke-width="2"></path></g></svg>
+        <div class="photo-label">Healing & Recovery<span>BPC-157, TB-500, KPV</span></div>
+      </div>
+      <div class="photo-grid-item" style="background:linear-gradient(135deg, rgba(192,132,252,0.12), rgba(192,132,252,0.03));">
+        <svg viewBox="0 0 120 90" style="width:100%;height:100%;position:absolute;top:0;left:0;opacity:0.5;" xmlns="http://www.w3.org/2000/svg"><g stroke="#c084fc" stroke-width="1.5" fill="none" opacity="0.5"><ellipse cx="60" cy="40" rx="25" ry="20"></ellipse><path d="M42 35 Q50 25 60 35 Q70 45 78 35" stroke-width="1"></path><circle cx="50" cy="33" r="2" fill="#c084fc" opacity="0.6"></circle><circle cx="70" cy="33" r="2" fill="#c084fc" opacity="0.6"></circle><path d="M35 50 Q60 70 85 50" stroke-dasharray="3,3" opacity="0.4"></path><line x1="60" y1="60" x2="60" y2="80" stroke-dasharray="2,3" opacity="0.3"></line><circle cx="60" cy="40" r="35" opacity="0.15"></circle></g></svg>
+        <div class="photo-label">Focus & Mental Clarity<span>Selank, Semax, Dihexa</span></div>
+      </div>
+      <div class="photo-grid-item" style="background:linear-gradient(135deg, rgba(251,146,60,0.12), rgba(251,146,60,0.03));">
+        <svg viewBox="0 0 120 90" style="width:100%;height:100%;position:absolute;top:0;left:0;opacity:0.5;" xmlns="http://www.w3.org/2000/svg"><g stroke="#fb923c" stroke-width="1.5" fill="none" opacity="0.5"><path d="M20 70 L35 55 L50 60 L65 35 L80 40 L100 20"></path><circle cx="65" cy="35" r="3" fill="#fb923c" opacity="0.4"></circle><circle cx="100" cy="20" r="3" fill="#fb923c" opacity="0.4"></circle><path d="M20 70 L100 70" opacity="0.2"></path><rect x="30" y="65" width="8" height="15" rx="2" fill="#fb923c" opacity="0.15"></rect><rect x="45" y="58" width="8" height="22" rx="2" fill="#fb923c" opacity="0.15"></rect><rect x="60" y="50" width="8" height="30" rx="2" fill="#fb923c" opacity="0.2"></rect><rect x="75" y="42" width="8" height="38" rx="2" fill="#fb923c" opacity="0.25"></rect></g></svg>
+        <div class="photo-label">Fat Loss & Metabolism<span>AOD-9604, MOTS-c</span></div>
+      </div>
+      <div class="photo-grid-item" style="background:linear-gradient(135deg, rgba(244,114,182,0.12), rgba(244,114,182,0.03));">
+        <svg viewBox="0 0 120 90" style="width:100%;height:100%;position:absolute;top:0;left:0;opacity:0.5;" xmlns="http://www.w3.org/2000/svg"><g stroke="#f472b6" stroke-width="1.5" fill="none" opacity="0.5"><path d="M60 25 L60 75" stroke-dasharray="1,4"></path><circle cx="60" cy="25" r="8"></circle><circle cx="60" cy="25" r="3" fill="#f472b6" opacity="0.3"></circle><circle cx="60" cy="75" r="5"></circle><path d="M40 40 L60 25 L80 40" opacity="0.3"></path><path d="M35 55 Q60 45 85 55" stroke-dasharray="3,3" opacity="0.3"></path><text x="60" y="28" text-anchor="middle" font-size="6" fill="#f472b6" stroke="none">DNA</text><path d="M45 60 Q52 50 60 55 Q68 60 75 50" stroke-width="1" opacity="0.4"></path></g></svg>
+        <div class="photo-label">Anti-Aging & Longevity<span>Epitalon, GHK-Cu</span></div>
+      </div>
+      <div class="photo-grid-item" style="background:linear-gradient(135deg, rgba(251,191,36,0.12), rgba(251,191,36,0.03));">
+        <svg viewBox="0 0 120 90" style="width:100%;height:100%;position:absolute;top:0;left:0;opacity:0.5;" xmlns="http://www.w3.org/2000/svg"><g stroke="#fbbf24" stroke-width="1.5" fill="none" opacity="0.5"><circle cx="60" cy="45" r="18"></circle><circle cx="60" cy="45" r="10" stroke-dasharray="3,3"></circle><circle cx="60" cy="45" r="4" fill="#fbbf24" opacity="0.3"></circle><line x1="60" y1="27" x2="60" y2="18"></line><line x1="60" y1="63" x2="60" y2="72"></line><line x1="42" y1="45" x2="33" y2="45"></line><line x1="78" y1="45" x2="87" y2="45"></line><line x1="47" y1="32" x2="41" y2="26"></line><line x1="73" y1="58" x2="79" y2="64"></line><line x1="73" y1="32" x2="79" y2="26"></line><line x1="47" y1="58" x2="41" y2="64"></line><circle cx="60" cy="18" r="2" fill="#fbbf24" opacity="0.4"></circle><circle cx="60" cy="72" r="2" fill="#fbbf24" opacity="0.4"></circle><circle cx="33" cy="45" r="2" fill="#fbbf24" opacity="0.4"></circle><circle cx="87" cy="45" r="2" fill="#fbbf24" opacity="0.4"></circle></g></svg>
+        <div class="photo-label">Immune Defense<span>Thymosin Alpha-1, LL-37</span></div>
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterCards('all')">All 20</button>
+      <button class="filter-btn" onclick="filterCards('testosterone')">Testosterone</button>
+      <button class="filter-btn" onclick="filterCards('healing')">Healing & Repair</button>
+      <button class="filter-btn" onclick="filterCards('gh')">Growth Hormone</button>
+      <button class="filter-btn" onclick="filterCards('fat')">Fat Loss</button>
+      <button class="filter-btn" onclick="filterCards('cognitive')">Cognitive</button>
+      <button class="filter-btn" onclick="filterCards('immune')">Immune</button>
+      <button class="filter-btn" onclick="filterCards('antiaging')">Anti-Aging</button>
+      <button class="filter-btn" onclick="filterCards('other')">Other</button>
+    </div>
+
+    <div class="peptide-grid" id="peptideGrid">
+      <!-- Cards generated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- BACKGROUND / TIMELINE -->
+<section id="background">
+  <div class="container">
+    <div class="visual-banner" style="background: linear-gradient(135deg, #0d1526, #162040);">
+      <svg viewBox="0 0 600 260" style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0.3;" xmlns="http://www.w3.org/2000/svg"><g stroke="rgba(91,138,245,0.3)" stroke-width="0.8" fill="none"><path d="M0 130 Q150 80 300 130 Q450 180 600 130" stroke-width="2" opacity="0.4"></path><path d="M0 150 Q150 100 300 150 Q450 200 600 150" stroke-dasharray="5,5" opacity="0.2"></path><circle cx="100" cy="115" r="6" fill="rgba(91,138,245,0.2)"></circle><circle cx="250" cy="125" r="8" fill="rgba(251,191,36,0.2)"></circle><circle cx="400" cy="140" r="6" fill="rgba(248,113,113,0.2)"></circle><circle cx="500" cy="130" r="10" fill="rgba(52,211,153,0.2)"></circle><text x="100" y="105" font-size="8" fill="rgba(255,255,255,0.15)" font-family="sans-serif">2020</text><text x="250" y="115" font-size="8" fill="rgba(255,255,255,0.15)" font-family="sans-serif">2023</text><text x="400" y="130" font-size="8" fill="rgba(255,255,255,0.15)" font-family="sans-serif">2024</text><text x="500" y="118" font-size="8" fill="rgba(255,255,255,0.15)" font-family="sans-serif">2026</text></g></svg>
+      <div class="visual-banner-content">
+        <h3>The Regulatory Battle</h3>
+        <p>From compounding pharmacies to the FDA to the Joe Rogan podcast — the story behind the most controversial compounds in health and wellness.</p>
+      </div>
+    </div>
+    <div class="section-label">Background</div>
+    <div class="section-title">How We Got Here</div>
+    <div class="section-desc">The regulatory saga of compounded peptides in the United States — from widespread availability to a sudden ban and now a historic reversal.</div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Pre-2023</div>
+        <div class="tl-title">Peptides Widely Available via Compounding</div>
+        <div class="tl-text">Licensed 503A and 503B compounding pharmacies routinely prepared peptides like BPC-157, CJC-1295, and Thymosin Alpha-1 for patients with valid prescriptions. The market grew rapidly as clinics offered compounded versions at lower cost than pharmaceutical alternatives.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">September 29, 2023</div>
+        <div class="tl-title">FDA Drops the Hammer — 19 Peptides Added to Category 2</div>
+        <div class="tl-text">Without much notice, the FDA placed 19 popular peptides on its Category 2 bulk drug substance list, citing "significant safety risks." This effectively banned compounding pharmacies from preparing these peptides, cutting off legal access for hundreds of thousands of patients virtually overnight.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Late 2023</div>
+        <div class="tl-title">Industry Pushback & Legal Challenges</div>
+        <div class="tl-text">Evexias Medical Group and Farmakeio (a compounding pharmacy) sued the FDA, claiming the agency violated proper procedure. The Save Peptides Coalition formed. The compounding industry argued the FDA acted without transparency or opportunity for comment.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">September 2024</div>
+        <div class="tl-title">FDA Removes 5 Peptides from Category 2</div>
+        <div class="tl-text">The FDA removed CJC-1295, Ipamorelin, Thymosin Alpha-1, AOD-9604, and Selank from Category 2 and sent them to the Pharmacy Compounding Advisory Committee (PCAC) for review — the first step toward potential Category 1 status.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">February 27, 2026</div>
+        <div class="tl-title">RFK Jr. Announces Reversal on Joe Rogan</div>
+        <div class="tl-text">On the Joe Rogan Experience podcast (#2461), HHS Secretary Robert F. Kennedy Jr. announced that approximately 14 of the 19 peptides will be moved back to Category 1, making them legal for compounding. He stated the FDA's original ban was illegal because it lacked the required "safety signal."</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color: var(--amber);"></div>
+        <div class="tl-date">Coming Soon</div>
+        <div class="tl-title">Official FDA Announcement Expected</div>
+        <div class="tl-text">The FDA is expected to formally update its Category lists within weeks of the announcement. The exact list of returning peptides and timeline depends on the agency's official publication.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATUS OVERVIEW -->
+<section id="status" style="background: var(--surface);">
+  <div class="container">
+    <div class="visual-banner" style="background: linear-gradient(135deg, #0d1520, #101830);">
+      <svg viewBox="0 0 600 260" style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0.3;" xmlns="http://www.w3.org/2000/svg"><g fill="none"><rect x="50" y="60" width="140" height="140" rx="12" stroke="rgba(91,138,245,0.3)" stroke-width="1"></rect><text x="120" y="120" text-anchor="middle" font-size="36" fill="rgba(91,138,245,0.15)" font-family="serif">5</text><text x="120" y="140" font-size="8" fill="rgba(91,138,245,0.2)" text-anchor="middle" font-family="sans-serif">REVIEW</text><rect x="230" y="60" width="140" height="140" rx="12" stroke="rgba(52,211,153,0.3)" stroke-width="1"></rect><text x="300" y="120" text-anchor="middle" font-size="36" fill="rgba(52,211,153,0.15)" font-family="serif">~9</text><text x="300" y="140" font-size="8" fill="rgba(52,211,153,0.2)" text-anchor="middle" font-family="sans-serif">RETURNING</text><rect x="410" y="60" width="140" height="140" rx="12" stroke="rgba(248,113,113,0.3)" stroke-width="1"></rect><text x="480" y="120" text-anchor="middle" font-size="36" fill="rgba(248,113,113,0.15)" font-family="serif">~5</text><text x="480" y="140" font-size="8" fill="rgba(248,113,113,0.2)" text-anchor="middle" font-family="sans-serif">RESTRICTED</text><line x1="190" y1="130" x2="230" y2="130" stroke="rgba(255,255,255,0.08)" stroke-width="2" stroke-dasharray="4,4"></line><line x1="370" y1="130" x2="410" y2="130" stroke="rgba(255,255,255,0.08)" stroke-width="2" stroke-dasharray="4,4"></line></g></svg>
+      <div class="visual-banner-content">
+        <h3>Where Things Stand Now</h3>
+        <p>The latest regulatory status of all 19 Category 2 peptides plus enclomiphene, based on official FDA actions and the RFK Jr. announcement.</p>
+      </div>
+    </div>
+    <div class="section-label">Current Status</div>
+    <div class="section-title">Where Each Peptide Stands</div>
+    <div class="section-desc">The 19 peptides are in different stages of the regulatory process. Here's the latest breakdown based on official FDA actions and RFK Jr.'s public statements.</div>
+
+    <div class="status-grid">
+      <div class="status-card">
+        <h4><div class="status-dot" style="background:var(--accent);"></div> <span style="color:var(--accent);">Under Formal PCAC Review (5)</span></h4>
+        <ul>
+          <li>CJC-1295 <span>GH-releasing hormone</span></li>
+          <li>Ipamorelin <span>GH secretagogue</span></li>
+          <li>Thymosin Alpha-1 <span>Immune modulator</span></li>
+          <li>AOD-9604 <span>Fat metabolism</span></li>
+          <li>Selank <span>Anxiolytic / nootropic</span></li>
+        </ul>
+      </div>
+      <div class="status-card">
+        <h4><div class="status-dot" style="background:var(--green);"></div> <span style="color:var(--green);">Likely Returning (~9)</span></h4>
+        <ul>
+          <li>TB-500 <span>Tissue repair</span></li>
+          <li>GHK-Cu (injectable) <span>Anti-aging</span></li>
+          <li>KPV <span>Anti-inflammatory</span></li>
+          <li>Semax <span>Nootropic</span></li>
+          <li>Epitalon <span>Telomerase activator</span></li>
+          <li>Emideltide (DSIP) <span>Sleep peptide</span></li>
+          <li>MOTS-c <span>Metabolic peptide</span></li>
+          <li>Cathelicidin LL-37 <span>Antimicrobial</span></li>
+          <li>BPC-157 <span style="color:var(--amber);">On hold — uncertain</span></li>
+        </ul>
+      </div>
+      <div class="status-card">
+        <h4><div class="status-dot" style="background:var(--red);"></div> <span style="color:var(--red);">Likely Staying Restricted (~5)</span></h4>
+        <ul>
+          <li>Melanotan II <span>Skin cancer risk</span></li>
+          <li>Ibutamoren (MK-677) <span>Side effect profile</span></li>
+          <li>PEG-MGF <span>Limited data</span></li>
+          <li>Dihexa Acetate <span>Minimal human data</span></li>
+          <li>Kisspeptin-10 <span>Reproductive concerns</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:16px;">
+      <div class="status-card" style="border-color: rgba(56,189,248,0.15);">
+        <h4><div class="status-dot" style="background:var(--cat-testosterone);"></div> <span style="color:var(--cat-testosterone);">Also Featured: Testosterone Support</span></h4>
+        <ul>
+          <li>Enclomiphene <span>SERM — compoundable with Rx</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISUAL CALLOUTS -->
+<section style="padding: 48px 24px;">
+  <div class="container">
+    <div class="info-callout">
+      <div style="width:180px;height:140px;border-radius:12px;flex-shrink:0;background:linear-gradient(135deg,rgba(91,138,245,0.1),rgba(139,108,246,0.05));display:flex;align-items:center;justify-content:center;">
+        <svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><g stroke="#5b8af5" stroke-width="1.5" fill="none" opacity="0.7"><circle cx="40" cy="22" r="10"></circle><path d="M25 55 Q25 38 40 38 Q55 38 55 55"></path><rect x="22" y="55" width="36" height="4" rx="2" fill="rgba(91,138,245,0.2)"></rect><circle cx="40" cy="22" r="4" fill="rgba(91,138,245,0.15)"></circle><path d="M30 68 L50 68" stroke-dasharray="3,3" opacity="0.4"></path><path d="M28 73 L52 73" stroke-dasharray="3,3" opacity="0.3"></path><circle cx="62" cy="18" r="6" stroke="#34d399"></circle><path d="M59 18 L62 21 L66 15" stroke="#34d399" stroke-width="2"></path></g></svg>
+      </div>
+      <div class="info-callout-text">
+        <h4>Always Work With a Licensed Provider</h4>
+        <p>These are powerful compounds — not supplements you pick up at the store. Whether it's enclomiphene for testosterone or BPC-157 for an injury, the safest and most effective path is through a licensed healthcare provider who can evaluate your labs, prescribe appropriately, and monitor your progress. Compounding pharmacies ensure pharmaceutical-grade purity that gray-market sources cannot guarantee.</p>
+      </div>
+    </div>
+    <div class="info-callout">
+      <div style="width:180px;height:140px;border-radius:12px;flex-shrink:0;background:linear-gradient(135deg,rgba(52,211,153,0.1),rgba(45,212,191,0.05));display:flex;align-items:center;justify-content:center;">
+        <svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><g stroke="#34d399" stroke-width="1.5" fill="none" opacity="0.7"><rect x="15" y="20" width="50" height="45" rx="6"></rect><rect x="15" y="20" width="50" height="12" rx="6" fill="rgba(52,211,153,0.1)"></rect><line x1="25" y1="42" x2="55" y2="42" opacity="0.4"></line><line x1="25" y1="50" x2="45" y2="50" opacity="0.3"></line><line x1="25" y1="58" x2="50" y2="58" opacity="0.3"></line><circle cx="55" cy="55" r="12" fill="rgba(52,211,153,0.08)" stroke="#34d399"></circle><path d="M50 55 L54 59 L61 50" stroke="#34d399" stroke-width="2"></path><path d="M30 12 L30 20" opacity="0.5"></path><path d="M50" y1="12" x2="50" y2="20" opacity="0.5"></path><circle cx="30" cy="10" r="3" fill="rgba(52,211,153,0.2)"></circle><circle cx="50" cy="10" r="3" fill="rgba(52,211,153,0.2)"></circle></g></svg>
+      </div>
+      <div class="info-callout-text">
+        <h4>Lab Work Matters</h4>
+        <p>Before starting any peptide or hormone therapy, baseline blood work is essential. Testosterone, estrogen, IGF-1, metabolic panels, and other markers help your provider determine the right compound, dosage, and protocol for your individual biology. Follow-up labs track your response and catch potential issues early.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background: var(--surface);">
+  <div class="container">
+    <div class="visual-banner" style="background: linear-gradient(135deg, #101525, #151a30);">
+      <svg viewBox="0 0 600 260" style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0.25;" xmlns="http://www.w3.org/2000/svg"><g fill="none"><text x="80" y="130" font-size="120" fill="rgba(139,108,246,0.08)" font-family="serif" font-weight="400">?</text><text x="250" y="160" font-size="80" fill="rgba(91,138,245,0.06)" font-family="serif" font-weight="400">?</text><text x="450" y="120" font-size="100" fill="rgba(52,211,153,0.06)" font-family="serif" font-weight="400">?</text><circle cx="150" cy="80" r="20" stroke="rgba(255,255,255,0.05)" stroke-width="1"></circle><circle cx="400" cy="200" r="15" stroke="rgba(255,255,255,0.04)" stroke-width="1"></circle><circle cx="520" cy="70" r="25" stroke="rgba(255,255,255,0.03)" stroke-width="1"></circle></g></svg>
+      <div class="visual-banner-content">
+        <h3>Your Questions, Answered</h3>
+        <p>Everything from FDA categories to prescriptions to the difference between compounded and research-grade compounds.</p>
+      </div>
+    </div>
+    <div class="section-label">FAQ</div>
+    <div class="section-title">Frequently Asked Questions</div>
+    <div class="section-desc">Common questions about these compounds, FDA regulations, and what the RFK Jr. announcement means for patients.</div>
+
+    <div id="faqContainer"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>This educational resource is provided for informational purposes only. Always consult a qualified healthcare provider before considering any peptide therapy.</p>
+  <div class="disclaimer">
+    <strong>Medical Disclaimer:</strong> This website does not constitute medical advice. The information presented here is based on publicly available regulatory and scientific sources as of March 2026. Peptide therapies should only be pursued under the supervision of a licensed healthcare provider. None of these peptides are FDA-approved drugs for general therapeutic use.
+  </div>
+</footer>
+
+<script>
+const peptides = [
+  {
+    num: 1, name: "Enclomiphene", alias: "Enclomiphene Citrate / Androxal",
+    cat: "testosterone", catLabel: "Testosterone Support", catClass: "cat-testosterone",
+    status: "Compoundable w/ Rx", statusClass: "badge-compoundable",
+    goodFor: ["Low Testosterone", "Low Libido", "Fertility Preservation", "Fatigue & Low Energy", "TRT Alternative", "Erectile Dysfunction"],
+    link: "https://www.enclomies.com",
+    linkLabel: "Learn more at enclomies.com",
+    desc: "A selective estrogen receptor modulator (SERM) that stimulates the body's own testosterone production without suppressing fertility. The purified active isomer of Clomid — rapidly becoming the go-to alternative to TRT for men who want higher T levels while keeping their sperm count intact.",
+    mechanism: "Blocks estrogen receptors in the hypothalamus and pituitary, disrupting the negative feedback loop that suppresses GnRH. This causes increased release of LH and FSH, which signal the testes to produce more testosterone naturally — without introducing external hormones.",
+    research: "Multiple Phase 2 and Phase 3 clinical trials demonstrated effectiveness in raising testosterone levels comparable to TRT gels, while maintaining or improving sperm counts. FDA rejected the NDA in 2015 citing inadequate study design, not safety concerns. In a study comparing enclomiphene to clomiphene, adverse events occurred in only 3.45% of enclomiphene users vs 18.18% on clomiphene. Development was discontinued in 2021 after corporate acquisition, not due to safety issues.",
+    popularUse: "Secondary hypogonadism (low testosterone from faulty brain-testes signaling), fertility preservation while boosting T levels, TRT alternative for men wanting to maintain sperm production, libido and energy improvement, body composition optimization.",
+    admin: "Oral capsule (daily)",
+    outlook: "Not FDA-approved as a standalone drug, but legally compoundable. Because enclomiphene is a component of the FDA-approved drug clomiphene (Clomid), it's eligible for compounding under Section 503A. The PCAC voted on its 503A status in June 2022 but the bulks list has not been updated — compounding pharmacies continue to legally fill prescriptions. It has NOT been placed on the Category 2 'do not compound' list."
+  },
+  {
+    num: 2, name: "BPC-157", alias: "Body Protection Compound-157 / Pentadecapeptide",
+    cat: "healing", catLabel: "Healing & Repair", catClass: "cat-healing",
+    status: "On Hold", statusClass: "badge-onhold",
+    goodFor: ["Tendon & Ligament Injuries", "Gut Healing (IBS, Leaky Gut)", "Post-Surgery Recovery", "Muscle Tears", "Joint Pain"],
+    desc: "A 15-amino acid peptide derived from human gastric juice — the single most in-demand peptide in the wellness space. Known as the \"Wolverine peptide\" in gym culture for its remarkable tissue healing properties.",
+    mechanism: "Promotes healing through upregulation of growth factors (VEGF, EGF), enhances angiogenesis (blood vessel formation), reduces inflammation, and accelerates tendon, ligament, muscle, and gut tissue repair.",
+    research: "Over 190 published papers on PubMed spanning 30+ years of research. Almost exclusively preclinical (animal and in vitro studies). A 2024 systematic review found it improved recovery in various tissue injury models with little to no adverse effects. However, there are virtually no randomized controlled human trials.",
+    popularUse: "Tendon and ligament injuries, gut healing (leaky gut, IBS), muscle tears, post-surgery recovery. Joe Rogan famously credited it with curing his tendonitis.",
+    admin: "Subcutaneous injection (most common), oral capsules, nasal spray",
+    outlook: "The biggest question mark. BPC-157 has the most consumer demand but also the most FDA scrutiny. Its status following the RFK announcement is described as \"on hold\" — whether it makes the final list of returning peptides is one of the most-watched questions in the industry."
+  },
+  {
+    num: 3, name: "TB-500", alias: "Thymosin Beta-4 Fragment (LKKTETQ)",
+    cat: "healing", catLabel: "Healing & Repair", catClass: "cat-healing",
+    status: "Likely Returning", statusClass: "badge-returning",
+    goodFor: ["Tissue Regeneration", "Joint Flexibility", "Sports Injuries", "Post-Workout Inflammation", "Wound Healing"],
+    desc: "A synthetic version of a naturally occurring protein that supports tissue repair, regeneration, and flexibility. Often stacked with BPC-157 in what's known as the \"Wolverine Stack\" for combined recovery effects.",
+    mechanism: "Promotes cell migration and blood vessel growth, reduces inflammation, increases actin protein to enhance cell structure and motility. Works systemically rather than locally.",
+    research: "Research supports anti-inflammatory and regenerative effects. Initial studies show tissue repair benefits without major red flags on safety in controlled settings. Banned by WADA as a doping substance.",
+    popularUse: "Tissue regeneration from injuries and surgeries, enhanced flexibility, joint recovery, reducing post-workout inflammation. Popular among athletes and bodybuilders.",
+    admin: "Subcutaneous injection",
+    outlook: "Expected to return to Category 1. TB-500 is widely used and has a reasonable safety profile in available studies."
+  },
+  {
+    num: 4, name: "CJC-1295", alias: "Growth Hormone-Releasing Hormone Analog",
+    cat: "gh", catLabel: "Growth Hormone", catClass: "cat-gh",
+    status: "Under PCAC Review", statusClass: "badge-review",
+    goodFor: ["Muscle Growth", "Fat Loss", "Anti-Aging", "Deeper Sleep", "Faster Recovery"],
+    desc: "A long-acting GHRH analog designed to stimulate the pituitary gland to release more natural growth hormone. Most commonly paired with Ipamorelin as the most popular GH stack in the fitness world.",
+    mechanism: "Extends the half-life of growth hormone-releasing hormone by attaching to a binding protein, allowing for more sustained and continuous GH release compared to natural GHRH pulses.",
+    research: "Has been associated with elevated GH and IGF-1 levels in studies. Some reports have flagged heart-related side effects. Already removed from Category 2 in September 2024 and currently under PCAC review.",
+    popularUse: "Muscle growth, fat loss, anti-aging, improved recovery and sleep quality. Typically used as a nightly injection in 3-6 month cycles.",
+    admin: "Subcutaneous injection (usually at bedtime)",
+    outlook: "Strong candidate for Category 1. Already under formal PCAC review since September 2024."
+  },
+  {
+    num: 5, name: "Ipamorelin", alias: "Ipamorelin Acetate",
+    cat: "gh", catLabel: "Growth Hormone", catClass: "cat-gh",
+    status: "Under PCAC Review", statusClass: "badge-review",
+    goodFor: ["Lean Muscle Gain", "Body Recomposition", "Anti-Aging", "Recovery & Sleep", "Beginner-Friendly GH"],
+    desc: "A selective growth hormone secretagogue that promotes GH release with fewer side effects than older GHRPs. Considered one of the cleanest GH peptides — it doesn't significantly increase appetite, cortisol, or prolactin.",
+    mechanism: "Binds to ghrelin receptors in the pituitary to trigger short, natural GH pulses — mimicking the body's own release pattern rather than creating a constant flood of growth hormone.",
+    research: "Well-studied growth hormone secretagogue with a favorable side effect profile compared to GHRP-6 and GHRP-2. Already removed from Category 2 in September 2024.",
+    popularUse: "Paired with CJC-1295 for muscle growth, body recomposition, anti-aging, and recovery. Popular as a first-choice GH peptide for beginners.",
+    admin: "Subcutaneous injection",
+    outlook: "Strong candidate for Category 1. Already under formal PCAC review."
+  },
+  {
+    num: 6, name: "AOD-9604", alias: "Anti-Obesity Drug 9604",
+    cat: "fat", catLabel: "Fat Loss", catClass: "cat-fat",
+    status: "Under PCAC Review", statusClass: "badge-review",
+    goodFor: ["Stubborn Belly Fat", "Fat Loss Without Muscle Loss", "Metabolic Support", "Weight Management"],
+    desc: "A modified fragment of human growth hormone specifically targeting fat metabolism. Unlike full HGH, AOD-9604 targets fat breakdown without affecting blood sugar or appetite.",
+    mechanism: "Stimulates lipolysis (fat breakdown) and inhibits lipogenesis (fat formation) by mimicking the fat-burning action of natural growth hormone without the growth-promoting or diabetogenic effects.",
+    research: "A clinical trial of 300 obese patients showed the 1mg daily group lost an average of 2.8kg over 12 weeks — more than 3x the placebo group. FDA cited concerns about immunogenicity and lack of sufficient safety data.",
+    popularUse: "Targeted fat loss (especially stubborn areas), body recomposition while preserving muscle. Popular with people wanting fat-specific effects without full GH side effects.",
+    admin: "Subcutaneous injection",
+    outlook: "Already under PCAC review since September 2024. Strong candidate to return."
+  },
+  {
+    num: 7, name: "Thymosin Alpha-1", alias: "Tα1 / Zadaxin",
+    cat: "immune", catLabel: "Immune", catClass: "cat-immune",
+    status: "Under PCAC Review", statusClass: "badge-review",
+    goodFor: ["Immune System Boost", "Chronic Infections (Hepatitis, Lyme)", "Cancer Adjunct", "Post-Illness Recovery", "Autoimmune Support"],
+    desc: "A naturally occurring thymic peptide and potent immune modulator. Already approved as a drug in over 30 countries for treating hepatitis B, hepatitis C, and as a cancer adjunct therapy.",
+    mechanism: "Modulates T-cell function, enhances dendritic cell activity, promotes immune surveillance, and helps restore immune balance. Acts as an immune system \"tuner\" rather than simply boosting or suppressing.",
+    research: "Extensive international clinical use spanning decades. Approved for therapeutic use in 30+ countries. Thousands of patients treated worldwide with a solid safety profile. The strongest clinical pedigree of any peptide on the Category 2 list.",
+    popularUse: "Immune optimization, chronic viral infections (hepatitis, EBV, Lyme), cancer adjunct therapy, autoimmune support, post-illness immune recovery.",
+    admin: "Subcutaneous injection",
+    outlook: "Under PCAC review. One of the strongest candidates to return given its international approval history."
+  },
+  {
+    num: 8, name: "Selank", alias: "Selank Acetate (TP-7)",
+    cat: "cognitive", catLabel: "Cognitive", catClass: "cat-cognitive",
+    status: "Under PCAC Review", statusClass: "badge-review",
+    goodFor: ["Anxiety Relief", "Focus & Concentration", "Stress Resilience", "Mood Stabilization", "No Sedation Side Effects"],
+    desc: "An anxiolytic and nootropic peptide developed in Russia that reduces anxiety while enhancing cognitive performance. Unlike benzodiazepines, Selank works without sedation or dependency risk.",
+    mechanism: "Modulates serotonin, dopamine, and norepinephrine pathways. Influences BDNF (brain-derived neurotrophic factor) expression. Stabilizes enkephalin degradation, enhancing the body's natural anti-anxiety mechanisms.",
+    research: "Approved as a medication in Russia for anxiety and neurasthenia. Clinical studies support anxiolytic effects without typical anti-anxiety drug side effects.",
+    popularUse: "Anxiety reduction, focus and concentration, stress resilience, cognitive clarity. Popular among biohackers for its clean anxiolytic profile.",
+    admin: "Nasal spray (most common), subcutaneous injection",
+    outlook: "Already under formal PCAC review. Strong candidate to return to Category 1."
+  },
+  {
+    num: 9, name: "Epitalon", alias: "Epithalon / Epithalone",
+    cat: "antiaging", catLabel: "Anti-Aging", catClass: "cat-antiaging",
+    status: "Likely Returning", statusClass: "badge-returning",
+    goodFor: ["Longevity & Anti-Aging", "Sleep Quality", "Circadian Rhythm Reset", "Cellular Rejuvenation", "Immune Support"],
+    desc: "A synthetic tetrapeptide that activates telomerase, the enzyme responsible for maintaining telomere length. Studied extensively in Russia for over 30 years as a potential anti-aging compound.",
+    mechanism: "Stimulates telomerase activity to protect and elongate telomeres — the protective caps on chromosomes that shorten with age. Also influences pineal gland function and melatonin production to regulate circadian rhythms.",
+    research: "Developed at the St. Petersburg Institute of Bioregulation and Gerontology. A landmark 2003 study showed Epitalon induces telomerase activity in human somatic cells. Animal studies show extended lifespan. 30+ years of Russian clinical use reports minimal adverse effects.",
+    popularUse: "Anti-aging and longevity protocols, improved sleep quality, circadian rhythm regulation, immune support. Typically administered in 10-20 day cycles repeated 2-3 times per year.",
+    admin: "Subcutaneous injection (most common), nasal spray",
+    outlook: "Expected to return to Category 1. Solid safety profile over decades of research use."
+  },
+  {
+    num: 10, name: "GHK-Cu", alias: "Copper Peptide (Injectable)",
+    cat: "antiaging", catLabel: "Anti-Aging", catClass: "cat-antiaging",
+    status: "Likely Returning", statusClass: "badge-returning",
+    goodFor: ["Skin Rejuvenation & Wrinkles", "Hair Regrowth", "Wound Healing", "Post-Procedure Recovery", "Collagen Production"],
+    desc: "A naturally occurring copper-binding peptide known for wound healing, collagen production, and anti-aging effects. Note: topical GHK-Cu remains legal and on Category 1 — only the injectable form was restricted.",
+    mechanism: "Promotes collagen and elastin synthesis, activates stem cells, reduces inflammation and oxidative damage, stimulates blood vessel growth, and remodels damaged tissue at the cellular level.",
+    research: "Well-studied for dermatological and wound-healing applications. Randomized trials support efficacy for hair growth and skin rejuvenation. The FDA's concern was specifically about injectable administration.",
+    popularUse: "Anti-aging (skin quality, wrinkles), hair regrowth, wound healing, post-procedure recovery. Topical forms are widely available in skincare; injectable forms are used for systemic effects.",
+    admin: "Subcutaneous injection (restricted), topical creams/serums (legal OTC)",
+    outlook: "Likely to return for injectable use. Already anticipated to be allowed for compounding under the RFK policy shift."
+  },
+  {
+    num: 11, name: "Semax", alias: "Semax Heptapeptide",
+    cat: "cognitive", catLabel: "Cognitive", catClass: "cat-cognitive",
+    status: "Likely Returning", statusClass: "badge-returning",
+    goodFor: ["Memory & Learning", "Focus & Mental Clarity", "Stroke Recovery", "ADHD-Like Symptoms", "Motivation & Mood"],
+    desc: "A nootropic peptide originally developed for stroke recovery and cognitive enhancement. Approved as a medication in Russia for stroke, TBI, and cognitive disorders.",
+    mechanism: "Increases BDNF expression, modulates serotonin and dopamine metabolism, enhances memory consolidation, and provides neuroprotective effects against oxidative damage.",
+    research: "Approved in Russia for clinical use. Studies show benefits for memory, attention, and cognitive function. Also studied for stroke recovery and neuroprotection. Good safety profile.",
+    popularUse: "Cognitive enhancement (focus, memory, mental clarity), ADHD-like symptom management, stroke and TBI recovery, motivation and mood support.",
+    admin: "Nasal spray (most common), subcutaneous injection",
+    outlook: "Expected to return to Category 1. Well-characterized safety profile from Russian clinical use."
+  },
+  {
+    num: 12, name: "KPV", alias: "Lysine-Proline-Valine Tripeptide",
+    cat: "healing", catLabel: "Healing & Repair", catClass: "cat-healing",
+    status: "Likely Returning", statusClass: "badge-returning",
+    goodFor: ["Gut Inflammation (IBD, Colitis)", "Skin Inflammation", "Crohn's-Like Symptoms", "Mucosal Healing", "Systemic Inflammation"],
+    desc: "A potent anti-inflammatory tripeptide derived from alpha-melanocyte-stimulating hormone (α-MSH). Studied primarily for gut inflammation and mucosal healing.",
+    mechanism: "Enters cells and inhibits inflammatory pathways (particularly NF-κB), reducing pro-inflammatory cytokine production. Works locally in the gut mucosa as well as systemically.",
+    research: "Preclinical studies show significant anti-inflammatory activity, particularly in colitis models. Research suggests it can reduce intestinal inflammation and promote mucosal healing. Limited human clinical data.",
+    popularUse: "Inflammatory bowel conditions (colitis, Crohn's-like symptoms), gut healing, systemic inflammation reduction, skin inflammation.",
+    admin: "Oral capsules (for gut), subcutaneous injection (systemic)",
+    outlook: "Expected to return to Category 1 based on its favorable safety profile in available research."
+  },
+  {
+    num: 13, name: "Cathelicidin LL-37", alias: "LL-37 Antimicrobial Peptide",
+    cat: "immune", catLabel: "Immune", catClass: "cat-immune",
+    status: "Likely Returning", statusClass: "badge-returning",
+    goodFor: ["Chronic Infections", "Biofilm-Related Illness (Lyme)", "Immune Defense", "Wound Healing", "Antimicrobial Protection"],
+    desc: "A naturally occurring antimicrobial peptide that's part of the innate immune system's first line of defense. Fights bacteria, viruses, and fungi while modulating inflammatory responses.",
+    mechanism: "Directly disrupts microbial cell membranes, recruits immune cells to infection sites, neutralizes bacterial endotoxins (LPS), and bridges innate and adaptive immunity.",
+    research: "Well-characterized as a component of human innate immunity. Studies support antimicrobial and immunomodulatory effects. Research ongoing into therapeutic applications.",
+    popularUse: "Immune defense against infections, chronic infection support (Lyme, biofilm-related infections), wound healing, immune system optimization.",
+    admin: "Subcutaneous injection",
+    outlook: "Expected to return to Category 1. Naturally occurring in the human body with well-understood mechanisms."
+  },
+  {
+    num: 14, name: "Emideltide (DSIP)", alias: "Delta Sleep-Inducing Peptide",
+    cat: "other", catLabel: "Sleep & Stress", catClass: "cat-other",
+    status: "Likely Returning", statusClass: "badge-returning",
+    goodFor: ["Insomnia", "Deep Sleep Quality", "Stress-Related Sleep Issues", "Jet Lag Recovery", "Chronic Pain via Better Sleep"],
+    desc: "A neuropeptide first isolated in 1977 from rabbit brain tissue during induced sleep. Studied for promoting deep, restorative sleep and stress-related sleep disorders.",
+    mechanism: "Modulates sleep architecture by influencing delta wave (deep sleep) activity. Also interacts with the stress response system (HPA axis) and may have adaptogenic and analgesic properties.",
+    research: "Decades of research since initial discovery. Studies show effects on sleep patterns and stress markers. Relatively limited clinical data.",
+    popularUse: "Insomnia and sleep quality improvement, stress-related sleep disruption, jet lag recovery, chronic pain management (via improved sleep).",
+    admin: "Subcutaneous injection, intranasal",
+    outlook: "Expected to return to Category 1. Lower profile peptide with limited safety concerns."
+  },
+  {
+    num: 15, name: "MOTS-c", alias: "Mitochondrial ORF of 12S rRNA-c",
+    cat: "fat", catLabel: "Fat Loss / Metabolic", catClass: "cat-fat",
+    status: "Likely Returning", statusClass: "badge-returning",
+    goodFor: ["Metabolic Optimization", "Insulin Sensitivity", "Endurance Enhancement", "\"Exercise in a Bottle\"", "Anti-Aging Metabolic Support"],
+    desc: "A mitochondrial-derived peptide often called an \"exercise mimetic\" because it activates many of the same metabolic pathways triggered by physical exercise, particularly AMPK signaling.",
+    mechanism: "Activates AMPK (a master metabolic regulator), improves insulin sensitivity, enhances fatty acid oxidation, regulates mitochondrial function, and promotes glucose uptake in skeletal muscle.",
+    research: "Identified in 2015. Animal studies show improved metabolic function, enhanced insulin sensitivity, and protection against diet-induced obesity. Limited human clinical data.",
+    popularUse: "Metabolic optimization, insulin sensitivity, endurance enhancement, anti-aging metabolic support.",
+    admin: "Subcutaneous injection",
+    outlook: "Expected to return to Category 1. Emerging research peptide with a favorable safety profile."
+  },
+  {
+    num: 16, name: "Melanotan II", alias: "MT-II",
+    cat: "other", catLabel: "Tanning / Sexual Health", catClass: "cat-other",
+    status: "Likely Restricted", statusClass: "badge-restricted",
+    goodFor: ["Sunless Tanning", "Erectile Dysfunction", "Libido Enhancement", "Appetite Suppression"],
+    desc: "A synthetic analog of alpha-melanocyte-stimulating hormone that stimulates melanin production (tanning) and has been studied for sexual dysfunction. Popular in bodybuilding for the \"competition tan.\"",
+    mechanism: "Activates melanocortin receptors (MC1R for pigmentation, MC4R for sexual function), leading to increased melanin production and enhanced sexual arousal. Also affects appetite.",
+    research: "Multiple studies on tanning and sexual function. Significant safety concerns including potential melanoma promotion, nausea, and cardiovascular effects. Banned from sale in Australia.",
+    popularUse: "Cosmetic tanning without UV exposure, sexual dysfunction (especially erectile dysfunction), appetite suppression.",
+    admin: "Subcutaneous injection, nasal spray",
+    outlook: "One of the most likely to remain restricted due to skin cancer concerns."
+  },
+  {
+    num: 17, name: "Ibutamoren (MK-677)", alias: "Ibutamoren Mesylate",
+    cat: "gh", catLabel: "Growth Hormone", catClass: "cat-gh",
+    status: "Likely Restricted", statusClass: "badge-restricted",
+    goodFor: ["GH Boost Without Injections", "Muscle Preservation", "Deeper Sleep", "Recovery Enhancement"],
+    desc: "An orally active growth hormone secretagogue that boosts GH and IGF-1 levels without injections. Its oral bioavailability makes it one of the most popular compounds for people who don't want needles.",
+    mechanism: "Mimics ghrelin and stimulates the ghrelin receptor (GHSR), causing sustained increases in GH and IGF-1 without suppressing natural testosterone or cortisol.",
+    research: "Published studies show sustained GH and IGF-1 elevation. Associated with potential side effects including increased appetite, water retention, insulin resistance, and elevated blood sugar.",
+    popularUse: "Muscle growth and preservation, improved sleep depth, enhanced recovery, anti-aging. Major draw is oral administration (no needles).",
+    admin: "Oral capsule/tablet (unique among GH compounds)",
+    outlook: "Likely to remain restricted due to its complex side effect profile, particularly metabolic effects like insulin resistance."
+  },
+  {
+    num: 18, name: "PEG-MGF", alias: "Pegylated Mechano Growth Factor",
+    cat: "gh", catLabel: "Growth Hormone / Repair", catClass: "cat-gh",
+    status: "Likely Restricted", statusClass: "badge-restricted",
+    goodFor: ["Targeted Muscle Growth", "Post-Injury Muscle Repair", "Bodybuilding Recovery"],
+    desc: "A pegylated version of a splice variant of IGF-1 released during muscle damage. The PEG modification extends its half-life for more sustained muscle growth and repair signaling.",
+    mechanism: "Activates satellite cells (muscle stem cells) to promote muscle fiber repair and growth. Pegylation increases stability and circulation time.",
+    research: "Limited human clinical data. Preclinical studies suggest muscle repair and growth properties. Manufacturing quality concerns.",
+    popularUse: "Targeted muscle growth and repair, post-injury muscle regeneration, bodybuilding recovery protocols.",
+    admin: "Intramuscular or subcutaneous injection",
+    outlook: "Likely to remain restricted due to limited human safety data and manufacturing quality concerns."
+  },
+  {
+    num: 19, name: "Dihexa", alias: "Dihexa Acetate",
+    cat: "cognitive", catLabel: "Cognitive", catClass: "cat-cognitive",
+    status: "Likely Restricted", statusClass: "badge-restricted",
+    goodFor: ["Cognitive Enhancement", "Memory & Neuroplasticity", "Alzheimer's Research", "Brain Fog"],
+    desc: "An extremely potent cognitive enhancer studied for Alzheimer's disease and neurodegenerative conditions. Reported to be millions of times more potent than BDNF at enhancing synaptic connections.",
+    mechanism: "Activates hepatocyte growth factor (HGF) / c-Met receptor system to promote new synaptic connections and enhance neural plasticity. Distinct mechanism from most other nootropics.",
+    research: "Very early-stage research. Animal studies show significant cognitive enhancement. Extremely limited human data. Concerns about potent growth-factor activity and possible tumor-promoting effects.",
+    popularUse: "Cognitive enhancement, memory improvement, neuroprotection, Alzheimer's research. Used cautiously due to potency and unknowns.",
+    admin: "Subcutaneous injection, intranasal, oral",
+    outlook: "Likely to remain restricted due to very limited human safety data and concerns about its potent growth-factor mechanism."
+  },
+  {
+    num: 20, name: "Kisspeptin-10", alias: "Kisspeptin / Metastin Fragment",
+    cat: "other", catLabel: "Reproductive / Hormonal", catClass: "cat-other",
+    status: "Likely Restricted", statusClass: "badge-restricted",
+    goodFor: ["Fertility Treatment", "Testosterone Stimulation", "Hormonal Regulation", "Sexual Arousal"],
+    desc: "A neuropeptide that plays a central role in triggering puberty and regulating reproductive hormone release. Studied for fertility treatments, sexual arousal, and hormonal regulation.",
+    mechanism: "Stimulates GnRH neurons in the hypothalamus, triggering release of LH and FSH — the hormones that drive testosterone production and ovulation.",
+    research: "Well-established role in reproductive physiology. Clinical studies support its ability to stimulate reproductive hormones. Safety concerns center around potent HPG axis effects.",
+    popularUse: "Fertility treatments (stimulating ovulation), testosterone support, sexual arousal enhancement, hormonal regulation research.",
+    admin: "Subcutaneous injection, intravenous (clinical settings)",
+    outlook: "Likely to remain restricted due to its potent effects on reproductive hormones and risk of unintended hormonal disruption."
+  }
+];
+
+const faqs = [
+  {
+    q: "What does \"Category 2\" mean?",
+    a: "The FDA maintains lists of bulk drug substances that compounding pharmacies can use. Category 1 substances are eligible for compounding. Category 2 substances are those the FDA has identified as presenting \"potential significant safety risks\" — compounding pharmacies are prohibited from using Category 2 substances to prepare medications. When a peptide is placed on Category 2, it effectively cuts off legal access through compounding pharmacies."
+  },
+  {
+    q: "Does moving back to Category 1 mean these peptides are FDA-approved?",
+    a: "No — this is a crucial distinction. Being moved to Category 1 makes these peptides legal for use by licensed compounding pharmacies to create preparations for specific patients with a prescription. It does NOT mean they are FDA-approved drugs. Full FDA approval is a much longer and more rigorous process involving extensive clinical trials to prove both safety and efficacy for a specific medical condition."
+  },
+  {
+    q: "Will I need a prescription for these peptides?",
+    a: "Yes. Compounded medications are prepared for individual patients based on a prescription from a licensed healthcare provider. This means you'll need to consult with a doctor who can evaluate whether a particular peptide therapy is appropriate for you, prescribe it, and monitor your use. This is actually a safety advantage — you get medical oversight and pharmaceutical-grade product quality."
+  },
+  {
+    q: "Why did the FDA ban these peptides in the first place?",
+    a: "The FDA cited \"significant safety risks\" including insufficient human safety data, the existence of impurities in compounded preparations, and the potential for adverse immune responses (immunogenicity). Critics argued the FDA overstepped by acting on a lack of efficacy data rather than actual evidence of harm — which is not the correct legal standard for a safety-based restriction."
+  },
+  {
+    q: "What happened with the RFK Jr. announcement?",
+    a: "On February 27, 2026, HHS Secretary Robert F. Kennedy Jr. appeared on the Joe Rogan Experience podcast (#2461) and stated that approximately 14 of the 19 banned peptides would be moved back to Category 1 within weeks. He argued the FDA's original ban was illegal because it lacked the required \"safety signal\" — concrete evidence of harm. The official FDA announcement with the final list is still pending."
+  },
+  {
+    q: "Can I still buy these peptides as \"research chemicals\"?",
+    a: "Non-approved peptides like BPC-157 and TB-500 can currently be purchased as \"research chemicals\" labeled \"not for human consumption.\" This market is technically legal in the U.S. However, the FDA has taken enforcement action when products are clearly marketed for human use. The quality, purity, and safety of research chemicals are not guaranteed — which is precisely why the return to legal compounding through licensed pharmacies is significant."
+  },
+  {
+    q: "What's the difference between compounded and research-grade peptides?",
+    a: "Compounded peptides are pharmaceutical-grade, prepared by licensed pharmacies under strict quality standards with a valid prescription and medical oversight. Research-grade peptides are manufactured for laboratory use, not approved for human consumption, and sold without quality assurance for human safety. The difference in purity, potency, and contamination risk can be significant."
+  },
+  {
+    q: "Are any of these peptides banned for athletes?",
+    a: "Yes. WADA (World Anti-Doping Agency) prohibits most performance-enhancing peptides under category S0 (non-approved substances) and S2 (peptide hormones, growth factors). BPC-157, TB-500, CJC-1295, Ipamorelin, MK-677, and most others on this list are banned for competitive athletes. Collagen peptides are the only peptide type in common use that is not prohibited by WADA."
+  },
+  {
+    q: "What about BPC-157 specifically — is it coming back?",
+    a: "BPC-157's status is the biggest question mark. It's the single most in-demand peptide but also faces the most FDA scrutiny. Early reports following the RFK announcement describe its status as \"on hold.\" It may return to Category 1, but it could also require additional review. The peptide community is watching this one very closely."
+  },
+  {
+    q: "When will the official FDA decision be announced?",
+    a: "RFK Jr. suggested the reversal could happen within a few weeks of the February 27, 2026 announcement. However, the official timeline depends on the FDA formally updating its lists. Patients and providers should monitor official FDA communications for the exact date and final list of returning peptides."
+  },
+  {
+    q: "What is enclomiphene and why is it on this list?",
+    a: "Enclomiphene is not a peptide — it's a selective estrogen receptor modulator (SERM) that boosts natural testosterone production. We include it because it's a key compound in the men's health and hormone optimization space, often discussed alongside these peptides. It's the purified active isomer of Clomid and offers a fertility-preserving alternative to testosterone replacement therapy (TRT). While not FDA-approved as a standalone drug, it's legally compoundable because it's a component of the FDA-approved medication clomiphene citrate."
+  },
+  {
+    q: "How is enclomiphene different from TRT?",
+    a: "TRT introduces external testosterone into the body, which suppresses your natural production and can significantly reduce sperm count — sometimes to zero. Enclomiphene works the opposite way: it stimulates your body to produce more of its own testosterone by blocking estrogen's negative feedback on the brain. This means you get higher T levels while maintaining (or even improving) fertility. Clinical trials showed comparable testosterone increases to TRT gels but without the fertility suppression."
+  }
+];
+
+// Render peptide cards
+const grid = document.getElementById('peptideGrid');
+peptides.forEach(p => {
+  const card = document.createElement('div');
+  card.className = `peptide-card fade-in`;
+  card.dataset.cat = p.cat;
+  card.onclick = (e) => {
+    if (e.target.closest('.pc-link')) return; // don't toggle when clicking link
+    const exp = card.querySelector('.pc-expand');
+    exp.classList.toggle('open');
+  };
+  const goodForHtml = (p.goodFor || []).map(g => `<span class="pc-goodfor-tag">${g}</span>`).join('');
+  const linkHtml = p.link ? `<a href="${p.link}" target="_blank" rel="noopener" class="pc-link ${p.cat === 'testosterone' ? 'testo' : ''}" onclick="event.stopPropagation();">${p.linkLabel || 'Learn more'} →</a>` : '';
+  card.innerHTML = `
+    <div class="pc-header">
+      <div class="pc-num">${String(p.num).padStart(2,'0')}</div>
+      <div class="pc-tag ${p.statusClass}">${p.status}</div>
+    </div>
+    <div class="pc-body">
+      <div class="pc-name">${p.name}</div>
+      <div class="pc-alias">${p.alias}</div>
+      <div class="pc-goodfor">${goodForHtml}</div>
+      <div class="pc-desc">${p.desc}</div>
+      ${linkHtml}
+      <div class="pc-meta" style="margin-top:${p.link ? '14px' : '0'};">
+        <div class="pc-meta-item">
+          <span class="pc-meta-label">Category</span>
+          <span class="pc-meta-value ${p.catClass}">${p.catLabel}</span>
+        </div>
+        <div class="pc-meta-item">
+          <span class="pc-meta-label">Administration</span>
+          <span class="pc-meta-value">${p.admin}</span>
+        </div>
+      </div>
+    </div>
+    <div class="pc-expand">
+      <h5>Mechanism of Action</h5>
+      <p>${p.mechanism}</p>
+      <h5>Research Status</h5>
+      <p>${p.research}</p>
+      <h5>Popular Uses</h5>
+      <p>${p.popularUse}</p>
+      <h5>Regulatory Outlook</h5>
+      <p>${p.outlook}</p>
+    </div>
+  `;
+  grid.appendChild(card);
+});
+
+// Render FAQs
+const faqContainer = document.getElementById('faqContainer');
+faqs.forEach(f => {
+  const item = document.createElement('div');
+  item.className = 'faq-item';
+  item.innerHTML = `
+    <div class="faq-q" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open');">${f.q}</div>
+    <div class="faq-a">${f.a}</div>
+  `;
+  faqContainer.appendChild(item);
+});
+
+// Filter
+function filterCards(cat) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.peptide-card').forEach(c => {
+    if (cat === 'all' || c.dataset.cat === cat) {
+      c.classList.remove('hidden');
+    } else {
+      c.classList.add('hidden');
+    }
+  });
+}
+</script>
+</body>
+</html>
