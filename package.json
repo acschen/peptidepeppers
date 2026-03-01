@@ -1,0 +1,24 @@
+{
+  "name": "peptidepeppers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve -s . -l $PORT",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acschen/peptidepeppers.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/acschen/peptidepeppers/issues"
+  },
+  "homepage": "https://github.com/acschen/peptidepeppers#readme",
+  "dependencies": {
+    "serve": "^14.2.5"
+  }
+}
